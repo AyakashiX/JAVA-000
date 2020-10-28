@@ -88,7 +88,7 @@ young区的大小会随着gc次数而递增，总的堆大小也会随着gc次�
 <a name="2kteB"></a>
 ## 遇到的问题
 
-1. 在分析parallel gc时，young区gc后少了55MB，而整个堆显示只少了40MB，为什么说少了的那个15MB晋升到了old区，parallel gc默认young区的对象要经历15次young gc才会晋升到old区吗？
+1. 在分析parallel gc时，young区gc后少了55MB，而整个堆显示只少了40MB，为什么说少了的那个15MB晋升到了old区，parallel gc默认young区的对象要经历15次young gc才会晋升到old区吗？(已解决)
 
 
 
