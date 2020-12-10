@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.geektime.sharding.repository.OrderRepository">
+
+    <resultMap id="orderMap" type="OrderTable">
+        <result column="order_id" property="orderId" jdbcType="INTEGER"/>
+        <result column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="product_name" property="productName" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--insert order-->
+    <insert id="addOrder" parameterType="OrderTable">
+        INSERT INTO order_table (order_id, product_id, product_name, user_id, user_name)
+        VALUES (#{orderId}, #{productId}, #{productName}, #{userId}, #{userName})
+    </insert>
+
+    <!--delete order-->
+    <delete id="deleteOrder" parameterType="long">
+        DELETE FROM order_table WHERE order_id = #{orderId}
+    </delete>
+
+    <!--findAllOrders-->
+    <select id="findAllOrders" resultMap="orderMap">
+        SELECT * FROM order_table
+    </select>
+
+    <!--select one order-->
+    <select id="selectOneOrder" parameterType="int" resultType="OrderTable">
+        SELECT * FROM order_table WHERE user_id=#{userId}
+    </select>
+
+    <!--update order-->
+    <update id="updateOrder" parameterType="OrderTable">
+        UPDATE order_table SET product_name=#{productName}, user_name=#{userName} WHERE order_id=#{orderId}
+    </update>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
